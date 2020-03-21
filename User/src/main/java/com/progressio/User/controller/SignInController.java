@@ -17,7 +17,6 @@ public class SignInController {
 
     @GetMapping(value = "/getUserById/{userId}")
     public User UserByIdEndPoint(@PathVariable(value = "userId") Long id) {
-
         return userCollectionLogic.GetUserById(id);
     }
 
@@ -34,7 +33,7 @@ public class SignInController {
     }
 
     @GetMapping(value = "/getAllUsers")
-    public List<User> removeUser() {
+    public List<User> getAllUsers() {
         return userCollectionLogic.GetAllUsers();
     }
 }
