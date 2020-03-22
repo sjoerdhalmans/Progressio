@@ -20,10 +20,14 @@ public class User implements Serializable {
     @NotBlank
     private String email;
 
-    public User(String username, String email, Long id) {
+    @NotBlank
+    private String sub;
+
+    public User(String username, String email, Long id, String sub) {
         this.id = id;
         this.username = username;
         this.email = email;
+        this.sub = sub;
     }
 
     public User(Long id) {
@@ -37,6 +41,14 @@ public class User implements Serializable {
     public User(String name, String email) {
         this.username = name;
         this.email= email;
+    }
+
+    public String getSub() {
+        return sub;
+    }
+
+    public void setSub(String sub) {
+        this.sub = sub;
     }
 
     public Long getId() {
