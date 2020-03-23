@@ -16,10 +16,8 @@ public class CorsConfig {
         return new WebMvcConfigurerAdapter() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/**")
-                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
-                        .allowedOrigins("*")
-                        .allowedHeaders("authorization", "Access-Control-Allow-Origin");
+                registry.addMapping("/**").allowedMethods("GET", "POST", "PUT", "DELETE").allowedOrigins("http://localhost:4200")
+                        .allowedHeaders("*");
             }
         };
     }
@@ -36,7 +34,12 @@ public class CorsConfig {
                 http.authorizeRequests()
                         .mvcMatchers("/api/**").permitAll();
 
-                http.csrf().disable().authorizeRequests().anyRequest().permitAll();
+                http.csrf().disable()
+                        .antMatcher("/**")
+                        .authorizeRequests().and()
+                        .httpBasic()
+                        .and()
+                        .authorizeRequests().anyRequest().authenticated().and().cors();
             }
         };
     }
