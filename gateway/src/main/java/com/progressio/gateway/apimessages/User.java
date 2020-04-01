@@ -19,5 +19,14 @@ public class User {
 
         return (String) MicroserviceRequest.CreateRequest(url, json, "", HttpMethod.GET);
     }
+
+    public static String addUser(String json) throws JSONException {
+        String url = "http://localhost:8081/api/addUser";
+
+        JSONObject jsonObject = new JSONObject(json);
+        JSONObject body = jsonObject.getJSONObject("Destinations");
+
+        return (String) MicroserviceRequest.CreateRequest(url, body.toString(), "", HttpMethod.POST);
+    }
 }
 
