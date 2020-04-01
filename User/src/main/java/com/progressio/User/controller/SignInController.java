@@ -1,6 +1,5 @@
 package com.progressio.User.controller;
 
-import com.progressio.User.dal.repo.UserRepo;
 import com.progressio.User.logic.UserCollectionLogic;
 import com.progressio.User.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +15,12 @@ public class SignInController {
     UserCollectionLogic userCollectionLogic;
 
     @GetMapping(value = "/getUserById/{userId}")
-    public User UserByIdEndPoint(@PathVariable(value = "userId") Long id) {
+    public User userByIdEndPoint(@PathVariable(value = "userId") Long id) {
         return userCollectionLogic.GetUserById(id);
     }
 
     @PostMapping(value = "/addUser")
-    public User AddUserEndPoint(@RequestBody User user) {
+    public User addUserEndPoint(@RequestBody User user) {
         user = userCollectionLogic.AddUser(user);
 
         return user;
