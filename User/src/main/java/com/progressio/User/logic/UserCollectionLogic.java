@@ -24,7 +24,9 @@ public class UserCollectionLogic {
         userRepo.delete(user);
     }
 
-    public List<User> GetAllUsers() { return userRepo.findAll(); }
+    public List<User> GetAllUsers() {
+        String test = userRepo.findAll().toString();
+        return userRepo.findAll(); }
 
     public User GetUserById(Long id) { return userRepo.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("User", "id", id)); }

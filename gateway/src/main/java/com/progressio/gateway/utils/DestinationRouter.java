@@ -11,8 +11,6 @@ public class DestinationRouter {
 
         JSONObject destination = jsonObject.getJSONObject("Destination");
 
-            System.out.println("test");
-
             Method method = Class
                     .forName("com.progressio.gateway.apimessages." + destination.getString("ApiName"))
                     .getMethod(destination.getString("ApiMethod"), String.class);

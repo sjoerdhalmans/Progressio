@@ -24,9 +24,8 @@ public class User {
         String url = "http://localhost:8081/api/addUser";
 
         JSONObject jsonObject = new JSONObject(json);
-        JSONObject body = jsonObject.getJSONObject("Destinations");
 
-        return (String) MicroserviceRequest.CreateRequest(url, body.toString(), "", HttpMethod.POST);
+        return (String) MicroserviceRequest.CreateRequest(url, jsonObject.toString(), "", HttpMethod.POST);
     }
 }
 
