@@ -1,4 +1,4 @@
-package com.progressio.User.controller;
+package com.progressio.User.controllers;
 
 import com.progressio.User.logic.UserCollectionLogic;
 import com.progressio.User.models.User;
@@ -16,23 +16,23 @@ public class SignInController {
 
     @GetMapping(value = "/getUserById/{userId}")
     public User userByIdEndPoint(@PathVariable(value = "userId") Long id) {
-        return userCollectionLogic.GetUserById(id);
+        return userCollectionLogic.getUserById(id);
     }
 
     @PostMapping(value = "/addUser")
     public User addUserEndPoint(@RequestBody User user) {
-        user = userCollectionLogic.AddUser(user);
+        user = userCollectionLogic.addUser(user);
 
         return user;
     }
 
     @DeleteMapping(value = "/removeUser")
     public void removeUser(@RequestBody User user ) {
-        userCollectionLogic.RemoveUser(user);
+        userCollectionLogic.removeUser(user);
     }
 
     @GetMapping(value = "/getAllUsers")
     public List<User> getAllUsers() {
-        return userCollectionLogic.GetAllUsers();
+        return userCollectionLogic.getAllUsers();
     }
 }

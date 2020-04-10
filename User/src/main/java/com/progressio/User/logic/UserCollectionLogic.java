@@ -14,9 +14,9 @@ public class UserCollectionLogic {
     @Autowired
     UserRepo userRepo;
 
-    public User AddUser(User user) { return userRepo.save(user); }
+    public User addUser(User user) { return userRepo.save(user); }
 
-    public void RemoveUser(User user) {
+    public void removeUser(User user) {
         long userid = user.getId();
         user = userRepo.findById(userid)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "id", userid));
@@ -24,10 +24,10 @@ public class UserCollectionLogic {
         userRepo.delete(user);
     }
 
-    public List<User> GetAllUsers() {
+    public List<User> getAllUsers() {
         String test = userRepo.findAll().toString();
         return userRepo.findAll(); }
 
-    public User GetUserById(Long id) { return userRepo.findById(id)
+    public User getUserById(Long id) { return userRepo.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("User", "id", id)); }
 }

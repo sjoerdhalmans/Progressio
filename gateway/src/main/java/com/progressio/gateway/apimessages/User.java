@@ -27,5 +27,13 @@ public class User {
 
         return (String) MicroserviceRequest.CreateRequest(url, jsonObject.toString(), "", HttpMethod.POST);
     }
+
+    public static String removeUser(String json) throws JSONException {
+        String url = "http://localhost:8081/api/removeUser";
+
+        JSONObject jsonObject = new JSONObject(json);
+
+        return (String) MicroserviceRequest.CreateRequest(url, jsonObject.toString(), "", HttpMethod.DELETE);
+    }
 }
 
