@@ -43,4 +43,12 @@ public class Project {
 
         return (String) MicroserviceRequest.CreateRequest(url, jsonObject.toString(), "", HttpMethod.DELETE);
     }
+
+    public static String getProjectsByUser(String json) throws JSONException {
+        JSONObject jsonObject = new JSONObject(json);
+
+        String url = "http://localhost:8085/api/getProjectsByUser/" + jsonObject.getString("Content");
+
+        return (String) MicroserviceRequest.CreateRequest(url, json, "", HttpMethod.GET);
+    }
 }

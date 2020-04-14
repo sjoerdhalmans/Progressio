@@ -23,6 +23,11 @@ public class ManagerController {
         return projectCollectionLogic.getProjectById(id);
     }
 
+    @GetMapping(value = "/getProjectsByUser/{userId}")
+    public List<Project> projectsByUser(@PathVariable(value = "userId") Long id) {
+        return projectCollectionLogic.getAllProjectsByUser(id);
+    }
+
     @PostMapping(value = "/addProject")
     public Project addProject(@RequestBody Project project) {
         return projectCollectionLogic.addProject(project);

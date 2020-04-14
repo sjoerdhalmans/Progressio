@@ -6,10 +6,13 @@ import com.progressio.Maven.ProjectManager.models.Project;
 import com.progressio.Maven.ProjectManager.models.ProjectUsers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.parameters.P;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectCollectionLogic {
@@ -31,6 +34,18 @@ public class ProjectCollectionLogic {
                 .orElseThrow(() -> new ResourceNotFoundException("Project", "id", projectId));
 
         projectRepo.delete(project);
+    }
+    
+    public List<Project> getAllProjectsByUser(long userId) {
+        List<Project> projects = new ArrayList<>();
+        for (Project project : getAllProjects()) {
+            List<ProjectUsers> founduser = project.getUsers().stream()
+                    .filter(user ->  user.getUser() == userId).collect(Collectors.toList());
+            if (founduser.size() != 0) {
+                projects.add(project);
+            }
+        }
+        return projects;
     }
 
     public List<Project> getAllProjects() {

@@ -12,7 +12,7 @@ public class ProjectUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true, updatable = false)
-    private int id;
+    private long id;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
@@ -20,7 +20,7 @@ public class ProjectUsers {
     private Project project;
 
     @Column(name = "user_id")
-    private int user;
+    private long user;
 
     @Transient
     private Long projectId;
@@ -33,11 +33,11 @@ public class ProjectUsers {
         this.projectId = projectId;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -49,11 +49,11 @@ public class ProjectUsers {
         this.project = project;
     }
 
-    public int getUser() {
+    public long getUser() {
         return user;
     }
 
-    public void setUser(int user) {
+    public void setUser(long user) {
         this.user = user;
     }
 
