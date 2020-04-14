@@ -41,7 +41,7 @@ public class MicroserviceRequest {
             try {
                 postData = new JSONObject(message).getJSONObject("Content");
             } catch (Exception e) {
-                postData = new JSONObject(message).getJSONObject("content");
+                postData = new JSONObject(message).getJSONObject("Content");
             }
 
             entity = new HttpEntity<>(postData.toString(), headers);
