@@ -50,7 +50,8 @@ public class ProjectCollectionLogic {
 
     public List<Project> getAllProjects() {
         String test = projectRepo.findAll().toString();
-        return projectRepo.findAll(); }
+        return projectRepo.findAll();
+    }
 
     public Project getProjectById(Long id) { return projectRepo.findById(id)
             .orElseThrow(() -> new ResourceNotFoundException("Project", "id", id));
