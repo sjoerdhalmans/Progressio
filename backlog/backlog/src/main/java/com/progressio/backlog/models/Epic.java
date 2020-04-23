@@ -22,8 +22,7 @@ public class Epic {
     @NotBlank
     private String name;
 
-    @NotBlank
-    private String projectId;
+    private @NotBlank Long projectId;
 
     @NotBlank
     private String description;
@@ -58,11 +57,11 @@ public class Epic {
         this.name = name;
     }
 
-    public String getProjectId() {
+    public Long getProjectId() {
         return projectId;
     }
 
-    public void setProjectId(String projectId) {
+    public void setProjectId(Long projectId) {
         this.projectId = projectId;
     }
 
