@@ -32,12 +32,23 @@ public class Task {
     @NotBlank
     private long projectId;
 
+    @Transient
+    private long storyId;
+
     public Task() {
 
     }
 
     public long getProjectId() {
         return projectId;
+    }
+
+    public long getStoryId() {
+        return storyId;
+    }
+
+    public void setStoryId(long storyId) {
+        this.storyId = storyId;
     }
 
     public void setProjectId(long projectId) {

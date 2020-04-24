@@ -1,6 +1,7 @@
 package com.progressio.backlog.logic;
 
 import com.progressio.backlog.dal.repo.EpicRepo;
+import com.progressio.backlog.exception.ResourceNotFoundException;
 import com.progressio.backlog.models.Epic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class EpicCollectionLogic {
         return filterEpicsById(epics, projectId);
     }
 
-    public List<Epic> filterEpicsById(List<Epic> epics, long projectId) {
+    private List<Epic> filterEpicsById(List<Epic> epics, long projectId) {
         List<Epic> foundEpics = new ArrayList<>();
 
         for (Epic epic : epics) {
@@ -30,8 +31,16 @@ public class EpicCollectionLogic {
         return foundEpics;
     }
 
-    public List<Epic> getAllEpics() {
+    private List<Epic> getAllEpics() {
         return epicRepo.findAll();
+    }
+
+    public Epic addEpic(Epic epic) {
+        return epicRepo.save(epic);
+    }
+
+    public Epic getEpicById(long epicId) {
+        return epicRepo.findById(epicId).orElseThrow(() -> new ResourceNotFoundException("Epic", "id", epicId));
     }
 }
 

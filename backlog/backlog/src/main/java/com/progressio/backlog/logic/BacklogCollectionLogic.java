@@ -24,7 +24,6 @@ public class BacklogCollectionLogic {
 
     public Backlog getBacklogById(long projectId) {
         DuplicateFilter duplicateFilter = new DuplicateFilter();
-
         List<Epic> epics = epicCollectionLogic.getEpicsById(projectId);
         List<Task> tasks = taskCollectionLogic.getTasksById(projectId);
         List<UserStory> userStories = userStoryCollectionLogic.getstoriesById(projectId);

@@ -35,12 +35,23 @@ public class UserStory {
     @NotBlank
     private long projectId;
 
-    @OneToMany(mappedBy = "story", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Transient
+    private long epicId;
+
+    @OneToMany(mappedBy = "story", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Task> tasks;
 
     public UserStory() {
 
+    }
+
+    public long getEpicId() {
+        return epicId;
+    }
+
+    public void setEpicId(long epicId) {
+        this.epicId = epicId;
     }
 
     public long getPoints() {

@@ -1,6 +1,7 @@
 package com.progressio.backlog.logic;
 
 import com.progressio.backlog.dal.repo.UserStoryRepo;
+import com.progressio.backlog.exception.ResourceNotFoundException;
 import com.progressio.backlog.models.UserStory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,14 +12,16 @@ import java.util.List;
 @Service
 public class UserStoryCollectionLogic {
     @Autowired
-    UserStoryRepo userRepo;
+    UserStoryRepo storyRepo;
+    @Autowired
+    EpicCollectionLogic epicLogic;
 
     public List<UserStory> getstoriesById(long projectId) {
-        List<UserStory> stories = getAllTasks();
-        return filterTasksById(stories, projectId);
+        List<UserStory> stories = getAllStories();
+        return filterstoriesById(stories, projectId);
     }
 
-    public List<UserStory> filterTasksById(List<UserStory> tasks, long projectId) {
+    private List<UserStory> filterstoriesById(List<UserStory> tasks, long projectId) {
         List<UserStory> foundUserStories = new ArrayList<>();
 
         for (UserStory userStory : tasks) {
@@ -30,7 +33,23 @@ public class UserStoryCollectionLogic {
         return foundUserStories;
     }
 
-    public List<UserStory> getAllTasks() {
-        return userRepo.findAll();
+    private List<UserStory> getAllStories() {
+        return storyRepo.findAll();
+    }
+
+    public UserStory addStory(UserStory story) {
+        return storyRepo.save(story);
+    }
+
+    public UserStory getStoryById(long storyId) {
+        return storyRepo.findById(storyId).orElseThrow(() -> new ResourceNotFoundException("UserStory", "id", storyId));
+    }
+
+    public UserStory updateStory(UserStory story) {
+        if (story.getEpicId() != 0) {
+            story.setEpic(epicLogic.getEpicById(story.getEpicId()));
+        }
+
+        return storyRepo.save(story);
     }
 }
