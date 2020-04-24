@@ -54,4 +54,9 @@ public class BacklogController {
     public Task updateTask(@RequestBody Task task) {
         return taskCollectionLogic.updateTask(task);
     }
+
+    @PutMapping(value ="/updateEpic")
+    public Epic updateEpic(@RequestBody Epic epic) {
+        return epicCollectionLogic.updateEpic(epic);
+    }
 }

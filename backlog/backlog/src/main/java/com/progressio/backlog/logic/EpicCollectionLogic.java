@@ -42,5 +42,9 @@ public class EpicCollectionLogic {
     public Epic getEpicById(long epicId) {
         return epicRepo.findById(epicId).orElseThrow(() -> new ResourceNotFoundException("Epic", "id", epicId));
     }
+
+    public Epic updateEpic(Epic epic) {
+        return epicRepo.save(epic);
+    }
 }
 
