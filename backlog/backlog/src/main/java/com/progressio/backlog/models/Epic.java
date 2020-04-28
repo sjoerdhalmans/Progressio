@@ -27,7 +27,7 @@ public class Epic {
     @NotBlank
     private String description;
 
-    @OneToMany(mappedBy = "epic", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "epic", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<UserStory> stories;
 

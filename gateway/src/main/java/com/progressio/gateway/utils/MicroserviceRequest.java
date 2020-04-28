@@ -15,7 +15,7 @@ public class MicroserviceRequest {
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity;
 
-        if(method == HttpMethod.POST){
+        if(method == HttpMethod.POST || method == HttpMethod.PUT){
             JSONObject postData = new JSONObject(message).getJSONObject("Content");
             entity = new HttpEntity<>(postData.toString(), headers);
 

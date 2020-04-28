@@ -38,12 +38,23 @@ public class UserStory {
     @Transient
     private long epicId;
 
+    @NotBlank
+    private Long priority;
+
     @OneToMany(mappedBy = "story", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<Task> tasks;
 
     public UserStory() {
 
+    }
+
+    public Long getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Long priority) {
+        this.priority = priority;
     }
 
     public long getEpicId() {
