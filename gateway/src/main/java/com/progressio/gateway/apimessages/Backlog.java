@@ -61,4 +61,28 @@ public class Backlog {
 
         return (String) MicroserviceRequest.CreateRequest(url, json, "", HttpMethod.PUT);
     }
+
+    public static String deleteTask(String json) throws JSONException {
+        JSONObject jsonObject = new JSONObject(json);
+
+        String url = "http://localhost:8086/api/deleteTask/" + jsonObject.getString("Content");
+
+        return (String) MicroserviceRequest.CreateRequest(url, json, "", HttpMethod.DELETE);
+    }
+
+    public static String deleteEpic(String json) throws JSONException {
+        JSONObject jsonObject = new JSONObject(json);
+
+        String url = "http://localhost:8086/api/deleteEpic/" + jsonObject.getString("Content");
+
+        return (String) MicroserviceRequest.CreateRequest(url, json, "", HttpMethod.DELETE);
+    }
+
+    public static String deleteStory(String json) throws JSONException {
+        JSONObject jsonObject = new JSONObject(json);
+
+        String url = "http://localhost:8086/api/deleteStory/" + jsonObject.getString("Content");
+
+        return (String) MicroserviceRequest.CreateRequest(url, json, "", HttpMethod.DELETE);
+    }
 }

@@ -25,7 +25,6 @@ public class UserCollectionLogic {
     }
 
     public List<User> getAllUsers() {
-        String test = userRepo.findAll().toString();
         return userRepo.findAll(); }
 
     public User getUserById(Long id) { return userRepo.findById(id)

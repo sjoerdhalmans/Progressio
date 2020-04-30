@@ -46,5 +46,9 @@ public class EpicCollectionLogic {
     public Epic updateEpic(Epic epic) {
         return epicRepo.save(epic);
     }
+
+    public void deleteEpic(long id) {
+        epicRepo.deleteById(id);
+    }
 }
 

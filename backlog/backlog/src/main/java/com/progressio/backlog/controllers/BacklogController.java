@@ -59,4 +59,19 @@ public class BacklogController {
     public Epic updateEpic(@RequestBody Epic epic) {
         return epicCollectionLogic.updateEpic(epic);
     }
+
+    @DeleteMapping(value ="/deleteEpic/{epicid}")
+    public void deleteEpic(@PathVariable(value="epicid") long id) {
+        epicCollectionLogic.deleteEpic(id);
+    }
+
+    @DeleteMapping(value ="/deleteTask/{taskid}")
+    public void deleteTask(@PathVariable(value="taskid") long id) {
+        taskCollectionLogic.deleteTask(id);
+    }
+
+    @DeleteMapping(value ="/deleteStory/{storyid}")
+    public void deleteStory(@PathVariable(value="storyid") long id) {
+        userStoryCollectionLogic.deleteStory(id);
+    }
 }

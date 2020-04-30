@@ -38,6 +38,9 @@ public class UserStoryCollectionLogic {
     }
 
     public UserStory addStory(UserStory story) {
+        int storyAmount = getstoriesById(story.getProjectId()).size();
+
+        story.setPriority((long) storyAmount + 1);
         return storyRepo.save(story);
     }
 
@@ -49,7 +52,14 @@ public class UserStoryCollectionLogic {
         if (story.getEpicId() != 0) {
             story.setEpic(epicLogic.getEpicById(story.getEpicId()));
         }
+        if (story.getPriority() == null || story.getPriority() == 0) {
+            story.setPriority(getStoryById(story.getId()).getPriority());
+        }
 
         return storyRepo.save(story);
+    }
+
+    public void deleteStory(long id) {
+        storyRepo.deleteById(id);
     }
 }

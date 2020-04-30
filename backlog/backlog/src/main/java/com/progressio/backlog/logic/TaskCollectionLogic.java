@@ -48,4 +48,8 @@ public class TaskCollectionLogic {
 
         return taskRepo.save(task);
     }
+
+    public void deleteTask(long id) {
+        taskRepo.deleteById(id);
+    }
 }
