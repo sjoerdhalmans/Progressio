@@ -1,5 +1,0 @@
-language: java
-script: 
-  - cd backlog
-     cd backlog
-     npm start
