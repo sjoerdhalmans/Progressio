@@ -1,3 +1,3 @@
 language: java
 script: 
-  - npm start
+  - mvn clean verify
