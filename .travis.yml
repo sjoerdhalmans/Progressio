@@ -1,4 +1,4 @@
 language: java
 script: 
 - cd backlog/backlog/src
-- npm start
+- mvn clean verify
