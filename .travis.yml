@@ -2,3 +2,9 @@ language: java
 script: 
 - cd backlog/backlog
 - mvn clean verify
+- cd ../../gateway
+- mvn clean verify
+- cd ../ProjectManager
+- mvn clean verify
+- cd ../User
+- mvn clean verify
