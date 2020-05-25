@@ -36,6 +36,10 @@ public class EpicCollectionLogic {
     }
 
     public Epic addEpic(Epic epic) {
+        int storyAmount = getEpicsById(epic.getProjectId()).size();
+
+        epic.setPriority((long) storyAmount + 1);
+
         return epicRepo.save(epic);
     }
 
@@ -44,6 +48,10 @@ public class EpicCollectionLogic {
     }
 
     public Epic updateEpic(Epic epic) {
+        if (epic.getPriority() == null || epic.getPriority() == 0) {
+            epic.setPriority(getEpicById(epic.getId()).getPriority());
+        }
+
         return epicRepo.save(epic);
     }
 

@@ -27,6 +27,9 @@ public class Epic {
     @NotBlank
     private String description;
 
+    @NotBlank
+    private Long priority;
+
     @OneToMany(mappedBy = "epic", cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<UserStory> stories;
@@ -39,6 +42,14 @@ public class Epic {
     public void removeTask(UserStory story) {
         stories.remove(story);
         story.setEpic(null);
+    }
+
+    public Long getPriority() {
+        return priority;
+    }
+
+    public void setPriority(Long priority) {
+        this.priority = priority;
     }
 
     public long getId() {
