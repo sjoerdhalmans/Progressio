@@ -11,6 +11,11 @@ import java.util.List;
 
 public class DuplicateFilter {
     public Backlog filterDuplicates(Backlog backlog) {
+        for (UserStory story : backlog.getLonestories()) {
+            if (story.getEpic() != null && story.getEpic().getId() !=  0) {
+                story.setEpicId(story.getEpic().getId());
+            }
+        }
         backlog.getLonestories().removeIf(x -> (x.getEpic() != null));
         backlog.getLonetasks().removeIf(x -> (x.getStory() != null));
 
